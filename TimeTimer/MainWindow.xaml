@@ -1,0 +1,38 @@
+﻿<Window x:Class="TimeTimer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TimeTimer"
+        Title="MainWindow"
+        Height="600"
+        Width="600"
+        Loaded="Window_Loaded"
+        Initialized="Window_Initialized">
+
+  <Window.Resources>
+    <local:MainViewModel x:Key="FakeMainWiewModel" />
+  </Window.Resources>
+  
+  <Grid>
+    
+    <Grid.RowDefinitions>
+      <RowDefinition Height="*" />
+      <RowDefinition Height="auto" />
+    </Grid.RowDefinitions>
+
+    <local:TimerDisplayView Grid.Row="0" DataContext="{Binding CurrentTimerDisplayVM}"/>
+    <local:ControlsView Grid.Row="1" DataContext="{Binding CurrentControlsVM}"/>
+    
+    <Grid Name="Completed"
+          Grid.Row="0"
+          >
+      <Button Name="btnCompleted"
+              Width="250"
+              Height="250">
+        <StackPanel Orientation="Vertical">
+          <Image Source="./Pictures/elephant.png" />
+          <TextBlock Margin="0,20,0,0" HorizontalAlignment="Center">Completed</TextBlock>
+        </StackPanel>
+      </Button>
+    </Grid>
+  </Grid>
+</Window>
